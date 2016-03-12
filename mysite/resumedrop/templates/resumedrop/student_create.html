@@ -1,0 +1,30 @@
+<h1> Create student profile </h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'resumedrop:create_success' %}" method="post">
+	{% csrf_token %}
+
+	Full Name: 
+	<input type="text" name="name" value="" required/>
+	<br>
+
+	WPI Email:
+	<input type="text" name="wpi_username" value="" required/>
+	@wpi.edu
+	<br>
+
+	Class Year:
+	<input type="text" name="class_year" value="" required/>
+	<br>
+
+	Major:
+	<input type="text" name="major" value="" required/>
+	<br>
+
+	Upload Resume:
+	<input type="button" name="resume" value="Upload Resume" required/>
+	<br>
+
+<input type="submit" value="Submit"/>
+</form>
