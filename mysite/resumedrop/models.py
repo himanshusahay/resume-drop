@@ -2,33 +2,21 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django import forms
-
+from django.utils.encoding import python_2_unicode_compatible
 
 # for student profile creation
 # -------------
-class Wpi_email(models.Model):
-    wpi_email_text = models.CharField(default='WPI Email', editable=False, max_length = 9)
-    wpi_email_value = forms.CharField(max_length = 30)
 
-class Name(models.Model):
-	identifier = models.ForeignKey(Wpi_email, on_delete=models.CASCADE)
-	name_text = models.CharField(default='Name', editable=False, max_length = 4)
-	name_value = forms.CharField(max_length = 80)
-
-class Class_year(models.Model):
-	identifier = models.ForeignKey(Wpi_email, on_delete=models.CASCADE)
-	class_year_text = models.CharField(default='Class Year', editable=False, max_length = 10)
-	class_year_value = forms.CharField(max_length = 15) # could be a master's student
-
-class Major(models.Model):
-	identifier = models.ForeignKey(Wpi_email, on_delete=models.CASCADE)
-	major_text = models.CharField(default='Major', editable=False, max_length = 4)
-	major_value = forms.CharField(max_length = 80)
-
-class Resume(models.Model):
-	identifier = models.ForeignKey(Wpi_email, on_delete=models.CASCADE)
-	resume_text = models.CharField(default='Resume', editable=False, max_length = 6)
-	# where will the resumes be stored
+@python_2_unicode_compatible  # to support python 2
+class Student(models.Model):
+	wpi_username = models.CharField(max_length = 30, default="") # will store as _______ @wpi.edu # unique identifier
+	name = models.CharField(max_length = 50, default="")
+	class_year = models.CharField(max_length = 15, default="") # could be a master's student
+	major = models.CharField(max_length = 80, default="")
+	# where will the resumes be stored?
+	
+	def __str__(self):
+		return self.name
 
 # ------------- 
 
