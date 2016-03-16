@@ -9,7 +9,7 @@ from django.utils.encoding import python_2_unicode_compatible
 # -------------
 
 def content_file_name(instance, filename):
-	return '/'.join(['documents', instance.wpi_username])
+	return '/'.join(['resumedrop/documents', instance.wpi_username])
 
 
 @python_2_unicode_compatible  # to support python 2

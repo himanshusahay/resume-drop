@@ -4,6 +4,9 @@ from django.core import urlresolvers
 from django.contrib import admin
 from . import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 app_name = 'resumedrop'
 
 urlpatterns = [
@@ -15,4 +18,4 @@ urlpatterns = [
 	url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
 	url(r'^logout/$', 'django.contrib.auth.views.logout', {'template_name': 'logout.html'}),
 	
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

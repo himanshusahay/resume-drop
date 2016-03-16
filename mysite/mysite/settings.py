@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
 ]
 
+STATIC_URL = '/static/'
+
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
