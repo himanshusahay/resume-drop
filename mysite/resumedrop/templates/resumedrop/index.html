@@ -1,7 +1,18 @@
 
 {% if success %}<p><strong>{{ success }}</strong></p>{% endif %}
 
+{% load admin_urls %}
+
 <br>
 <a href="{% url 'resumedrop:student_create' %}">Students</a>
 <br>
-<a href="">Companies</a>
+<a href="{% url 'admin:index' %}">Companies</a> 
+<br>
+TO DO
+<br>
+# Implement SSL
+
+<br>
+<br>
+
+To register for the 2016 Startup Career Fair, visit <a href="http://www.techentrepreneurs.org/startup-career-fair-1/"> this</a> link.

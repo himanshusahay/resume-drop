@@ -2,7 +2,7 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'resumedrop:create_success' %}" method="post">
+<form action="{% url 'resumedrop:create_success' %}" method="post" enctype="multipart/form-data">
 	{% csrf_token %}
 
 	Full Name: 
@@ -23,8 +23,9 @@
 	<br>
 
 	Upload Resume:
-	<input type="button" name="resume" value="Upload Resume" required/>
+	<!-- <input type="button" name="resume" value="Upload Resume" required/> -->
+	<input name="upload_file" type="file">
 	<br>
-
+	
 <input type="submit" value="Submit"/>
 </form>

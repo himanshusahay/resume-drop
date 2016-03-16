@@ -14,6 +14,7 @@ class Student(models.Model):
 	class_year = models.CharField(max_length = 15, default="") # could be a master's student
 	major = models.CharField(max_length = 80, default="")
 	# where will the resumes be stored?
+	resume = models.FileField(upload_to='documents/%Y/%m/%d', null=True)
 	
 	def __str__(self):
 		return self.name

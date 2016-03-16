@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 
 from .models import Student
+from .forms import UploadFileForm
 
 
 '''
@@ -28,27 +29,51 @@ def create_success(request):
 		try:
 			wpi_username = request.POST['wpi_username']
 
-			try:
-				student_to_check = Student.objects.get(wpi_username__exact = wpi_username)
-			
-				# if this student exists, overwrite data
-				student_to_check.name = request.POST['name'] 
-				student_to_check.class_year = request.POST['class_year']
-				student_to_check.major = request.POST['major']
-				student_to_check.save()
-				return HttpResponseRedirect(reverse('resumedrop:success_redirect'))
-			
-			# this student is a new one, will have to create a new entry in the db
-			except (KeyError, Student.DoesNotExist):
+			# handle resume upload
+			form = UploadFileForm(request.POST, request.FILES)
 
-				name = request.POST['name']
-				class_year = request.POST['class_year']
-				major = request.POST['major']
-				# !!!!!Check for resume too, later
-				student_created = Student(wpi_username=wpi_username, name=name, class_year=class_year, major=major)				
-				student_created.save()
+			if form.is_valid():
+				resume = request.FILES['upload_file']
+			
+				# do this if form is valid
+				try:
+					student_to_check = Student.objects.get(wpi_username__exact = wpi_username)
 				
-				return HttpResponseRedirect(reverse('resumedrop:success_redirect'))
+					# if this student exists, overwrite data
+					student_to_check.name = request.POST['name'] 
+					student_to_check.class_year = request.POST['class_year']
+					student_to_check.major = request.POST['major']
+
+					# # handle resume upload
+					# form = UploadFileForm(request.POST, request.FILES)
+					# if form.is_valid():
+					# 	student_to_check.resume = request.FILES['upload_file']
+					
+					student_to_check.resume = resume	
+					student_to_check.save()
+					return HttpResponseRedirect(reverse('resumedrop:success_redirect'))
+				
+				# this student is a new one, will have to create a new entry in the db
+				except (KeyError, Student.DoesNotExist):
+
+					name = request.POST['name']
+					class_year = request.POST['class_year']
+					major = request.POST['major']
+
+					# handle resume upload
+					# form = UploadFileForm(request.POST, request.FILES)
+					# if form.is_valid():
+					# 	resume = request.FILES['upload_file']
+					
+					student_created = Student(wpi_username=wpi_username, name=name, class_year=class_year, major=major, resume=resume)
+					student_created.save()
+					
+					return HttpResponseRedirect(reverse('resumedrop:success_redirect'))
+
+			# if form is not valid
+			else:
+				# Redisplay form to submit data properly
+				return render(request, 'resumedrop/student_create.html', {'error_message: "Information not inputted correctly"'})
 
 		except KeyError:
 			# Redisplay form to submit data properly
