@@ -1,31 +1,89 @@
-<h1> Create student profile </h1>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load staticfiles %}
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Create Student Profile</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="/static/polls/css/bootstrap.min.css" rel="stylesheet">
+		<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="/static/polls/css/styles.css" rel="stylesheet">
+</head>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<body>
 
-<form action="{% url 'resumedrop:create_success' %}" method="post" enctype="multipart/form-data">
-	{% csrf_token %}
+	{% load staticfiles %}
+<div class="container-full">
 
-	Full Name: 
-	<input type="text" name="name" value="" required/>
-	<br>
+	<div class="row">
+   
+	    <div class="col-lg-12 text-center v-center">
+        	<h2> Create student profile </h2>
+        </div>
+    </div>
 
-	WPI Email:
-	<input type="text" name="wpi_username" value="" required/>
-	@wpi.edu
-	<br>
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-	Class Year:
-	<input type="text" name="class_year" value="" required/>
-	<br>
+	<form class="col-lg-12" action="{% url 'resumedrop:create_success' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}    
+            <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+	            <input class="form-control input-lg" name="name" placeholder="Full Name" type="text" required>
+            </div>
 
-	Major:
-	<input type="text" name="major" value="" required/>
-	<br>
+			<div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+	            <input class="form-control input-lg" title="Don't worry. We hate spam, and will not share your email with anyone." name="wpi_username" placeholder="WPI username" type="text" required>
+	            <span class="input-group-btn"><button class="btn btn-lg" type="button" disabled>@wpi.edu</button></span>
+            </div>
+            
+            <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+	            <input class="form-control input-lg" name="class_year" placeholder="Class Year (for example: 2017)" type="text" required>
+            </div>
+			
+			<div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+	            <input class="form-control input-lg" name="major" placeholder="Major (comma separated if multiple majors)" type="text" required>
+            </div>
+			
+			<div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+            	<input class="form-control input-lg" name="upload_file" type="file" required>
+            </div>
+        	
+			<div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+	            <input class="form-control input-lg btn btn-lg btn-primary" value="Submit" type="submit" required>	             
+            </div>
 
-	Upload Resume:
-	<!-- <input type="button" name="resume" value="Upload Resume" required/> -->
-	<input name="upload_file" type="file">
-	<br>
-	
-<input type="submit" value="Submit"/>
-</form>
+          </form> 
+<!-- 
+	<form action="{% url 'resumedrop:create_success' %}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+
+		Full Name: 
+		<input type="text" name="name" value="" required/>
+		<br>
+
+		WPI Email:
+		<input type="text" name="wpi_username" value="" required/>
+		@wpi.edu
+		<br>
+
+		Class Year:
+		<input type="text" name="class_year" value="" required/>
+		<br>
+
+		Major:
+		<input type="text" name="major" value="" required/>
+		<br>
+
+		Upload Resume:
+		<input name="upload_file" type="file" required>
+		<br>
+		
+	<input type="submit" value="Submit"/>
+	</form> -->
+</div>
+</body>
