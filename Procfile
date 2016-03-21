@@ -1,1 +1,1 @@
-web: gunicorn mysite.wsgi:application --pythonpath='/home/hsahay/Desktop/resume-drop/mysite/mysite,/home/hsahay/Desktop/resume-drop/mysite/resumedrop,/home/hsahay/Desktop/resume-drop/mysite,/home/hsahay/Desktop/resume-drop' --log-file -
+web: gunicorn mysite.wsgi:application --pythonpath='/app/mysite' --log-file -
