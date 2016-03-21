@@ -1,6 +1,5 @@
 dj-database-url==0.4.0
 Django==1.9.4
-python-debian===0.1.21-nmu2ubuntu2
 virtualenv==1.11.4
 whitenoise==2.0.6
 
