@@ -4,5 +4,3 @@ dj-database-url==0.4.0
 gunicorn==19.4.5
 whitenoise==2.0.6
 wsgiref==0.1.2
-psycopg2>=2.4.5
-
