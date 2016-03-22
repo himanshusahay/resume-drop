@@ -31,24 +31,24 @@ To register for the 2016 Startup Career Fair, visit <a href="http://www.techentr
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		{% load staticfiles %}
+		{% load  static from staticfiles %}
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
 		<title>WPI Startup Career Fair</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="/static/polls/css/bootstrap.min.css" rel="stylesheet">
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 		<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link href="/static/polls/css/styles.css" rel="stylesheet">
+		<link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
 
 <body>
 	{% load admin_urls %}
-	{% load staticfiles %}
+	{% load static from staticfiles %}
 
 <div class="container-full">
 
@@ -100,7 +100,7 @@ To register for the 2016 Startup Career Fair, visit <a href="http://www.techentr
 
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="/static/polls/js/bootstrap.min.js"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
 		<script>
 		document.getElementById("student_button").onclick = function () {
 		        location.href = "{% url 'resumedrop:student_create' %}";
