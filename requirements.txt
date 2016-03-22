@@ -3,6 +3,6 @@ argparse==1.2.1
 gunicorn==19.4.5
 psycopg2==2.4.5
 boto==2.39.0
-django-s3-storage==0.9.8
+git+https://github.com/etianen/django-s3-storage.git#egg=django-s3-storage
 django-environ==0.4.0
 six==1.10.0
