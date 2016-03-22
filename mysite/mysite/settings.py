@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-# Update database configuration with $DATABASE_URL.
-import dj_database_url
 import environ
 
 env = environ.Env()
