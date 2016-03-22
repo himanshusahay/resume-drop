@@ -19,7 +19,8 @@ class Student(models.Model):
 	class_year = models.CharField(max_length = 15, default="") # could be a master's student
 	major = models.CharField(max_length = 80, default="")
 	# where will the resumes be stored?
-	resume = models.FileField(upload_to=content_file_name)
+	resume = models.FileField()
+	notes = models.FileField(max_length = 3000, default="") # for company to take notes on student (only in admin page)
 	
 	def __str__(self):
 		return self.name
