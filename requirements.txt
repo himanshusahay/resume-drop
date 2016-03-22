@@ -2,6 +2,7 @@ Django==1.9.4
 argparse==1.2.1
 dj-database-url==0.4.0
 gunicorn==19.4.5
-whitenoise==2.0.6
 wsgiref==0.1.2
 psycopg2==2.4.5
+boto==2.39.0
+django-s3-storage==0.98
